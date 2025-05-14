@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    button a{
+        text-decoration: none;
+        color: white;
+    }
+</style>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Registro de Usuario</h2>
+        <div class="card mx-auto p-4 shadow" style="max-width: 400px;">
+            <form id="registerForm">
+                <div class="mb-3">
+                    <label for="nameRegister" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="nameRegister" required>
+                    <div class="invalid-feedback">Introduce tu nombre.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="emailRegister" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="emailRegister" required>
+                    <div class="invalid-feedback">Introduce un correo válido.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="passwordRegister" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="passwordRegister" required minlength="6">
+                    <div class="invalid-feedback">Debe tener al menos 6 caracteres.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPasswordRegister" class="form-label">Confirmar Contraseña</label>
+                    <input type="password" class="form-control" id="confirmPasswordRegister" required minlength="6">
+                    <div class="invalid-feedback">Debe coincidir con la contraseña.</div>
+                </div>
+                <button type="submit" class="btn btn-success w-100"><a href="./index.html">Registrarse</a></button>
+                <p class="text-center mt-3">¿Ya tienes cuenta? <a href="./iniciarsesion.html">Inicia sesión aquí</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function() {
+            'use strict';
+            var form = document.getElementById('registerForm');
+
+            form.addEventListener('submit', function(event) {
+                var password = document.getElementById('passwordRegister').value;
+                var confirmPassword = document.getElementById('confirmPasswordRegister').value;
+
+                if (!form.checkValidity() || password !== confirmPassword) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    document.getElementById('confirmPasswordRegister').classList.add('is-invalid');
+                } else {
+                    alert('Registro exitoso. Redirigiendo a la página de inicio de sesión...');
+                    window.location.href = 'login.html';
+                }
+
+                form.classList.add('was-validated');
+            });
+        })();
+    </script>
+
+</body>
+</html>
